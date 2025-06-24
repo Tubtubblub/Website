@@ -48,9 +48,11 @@ header h1 {
  
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+max-width: 100%;
+  grid-template-columns: repeat(auto-fit  , minmax(150px, 1fr));
   gap: 10px; /* Abstand zwischen Bildern */
   padding: 1rem;
+
 }
 
 .gallery img {
@@ -70,19 +72,19 @@ header h1 {
 
 
 
-    nav a {
-  color: rgba(255, 145, 0, 0.897);
-      
-      margin: 0 1rem;
-      text-decoration: none;
-    }
+    nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+}
 
-    main {
-      padding: 2rem;
-      max-width: 800px;
-      margin: auto;
-      text-align: center;
-    }
+nav a {
+  color: rgba(255, 145, 0, 0.897);
+  text-decoration: none;
+  font-weight: bold;
+}
+
 
 
     
@@ -132,9 +134,14 @@ header h1 {
 
 
 <nav>
-    <a href="#about">Über mich</a>
-    <a href="#contact">Socials</a>
-    <a href="#gallery">Galerie</a>
+  
+  <a href="https://www.instagram.com/miaaa.a01" target="_blank" rel="noopener">instagram</a>
+  <a href="#gallery">Galerie</a>
+  <a href="#shop">Shop</a>
+
+
+
+</nav>
 
  
 
@@ -156,8 +163,9 @@ header h1 {
 
 
   <main>
-    <h2 id="about">Über mich</h2>
+    
     <p>kunst von kleinen künstlern!!!!
+
         entdeckehier deine neue lieblingskunstwerke!</p>
     </p>
     
