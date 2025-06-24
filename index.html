@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Website ähnlichwie etsy(?)</title>
   <style>
-    body {
-      font-family: Arial papyrus;
-      margin: 0;
-      background-color: #ad5883;
-      color: #e27e2c;
-    }
+  body {
+    font-family: Arial, papyrus;
+    margin: 0;
+    background-color: #ad5883;
+    color: #e27e2c;
+    overflow-x: hidden; /* verhindert horizontales Scrollen */
+  }
 
     header {
   position: relative;
@@ -29,6 +30,11 @@
   text-align: center;
     font-family:papyrus;
     font-size: 2rem;
+
+    max-width: 100%;
+box-sizing: border-box;
+  overflow: hidden; /* Verhindert Überlauf */
+
   }
 
 
@@ -54,6 +60,7 @@ header h1 {
   border-radius: 8px;
   cursor: pointer;
   transition: transform 0.3s ease;
+  aspect-ratio: 1 / 1; /* Quadratische Bilder */
 }
 
 .gallery img:hover {
@@ -92,7 +99,15 @@ header h1 {
 
 
 
-    
+     /* ✅ MEDIA QUERY für kleine Bildschirme */
+  @media (max-width: 600px) {
+    header h1 {
+      transform: translate(30%,80px) rotate(5deg);
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  }
+</style>
 
 
 
