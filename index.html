@@ -39,11 +39,33 @@ header h1 {
   padding: 0;
 }
 
+ 
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px; /* Abstand zwischen Bildern */
+  padding: 1rem;
+}
+
+.gallery img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
 
 
 
     nav a {
-      color: white;
+  color: rgba(255, 145, 0, 0.897);
+      
       margin: 0 1rem;
       text-decoration: none;
     }
@@ -56,29 +78,10 @@ header h1 {
     }
 
 
-    button {
-
-      background-color: #00000025;
-      color: rgb(214, 139, 0);
-      border: none;
-      padding: 0,5rem 0.5rem;
-      font-size: 0.6rem;   ;
-      cursor: pointer;
-      margin-top: 1rem;
-
-position: absolute;
-
-        top: 330px;
-        left:50%;
-        transform: translateX(-50%);
-        
-       
-    }
+    
 
 
-    button:hover {
-      background-color: #7a2f12;
-    }
+    
 
     footer {
       text-align: center;
@@ -103,14 +106,31 @@ position: absolute;
 
   </style>
 </head>
-<body>
-  <header>
+
+<header>
   <h1>Mias kreativer Kopf!</h1>
 </header>
 
+<body>
+
+
+
+
+<nav>
+    <a href="#about">Über mich</a>
+    <a href="#contact">Socials</a>
+    <a href="#gallery">Galerie</a>
 
  
 
+<section class="gallery">
+  <img src="images/bild1.jpg" alt="Bild 1" />
+  <img src="images/bild2.jpg" alt="Bild 2" />
+  <img src="images/bild3.jpg" alt="Bild 3" />
+  <img src="images/bild4.jpg" alt="Bild 4" />
+  <img src="images/bild5.jpg" alt="Bild 5" />
+  <img src="images/bild6.jpg" alt="Bild 6" />
+</section>
 
 
 
@@ -125,7 +145,7 @@ position: absolute;
     </p>
     
     
-    <button onclick="alert('Danke fürs Klicken!')">Hero(in)</button>
+    
 
   </main>
 
