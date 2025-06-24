@@ -13,14 +13,34 @@
     }
 
     header {
+  position: relative;
+  height: 300px;
+  background-image: url("images/keep2.jpg.jpg");
+  background-repeat: no-repeat;
+  background-position: center 30%; /* horizontale Mitte, vertikal etwas nach oben */
+  background-size: 100%; /* < 100% = reingezoomt; > 100% = rausgezoomt */
+  
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 2rem;
+  
+  color: rgba(255, 145, 0, 0.897);
+  text-align: center;
+    font-family:papyrus;
+    font-size: 2rem;
+  }
+
+
+header h1 {
+  transform: translate(320px, 88px) rotate(5deg);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Schatten */
+  margin: 0;
+  padding: 0;
+}
 
 
 
-      background-color: #e45d0f;
-      color: white;
-      padding: 1rem;
-      text-align: center;
-    }
 
     nav a {
       color: white;
@@ -67,11 +87,7 @@ position: absolute;
       margin-top: 2rem;
     }
 
-header img {
-      width: 30px;
-      height: auto;
-      vertical-align: middle;
-    }
+
 
     
 
@@ -89,11 +105,9 @@ header img {
 </head>
 <body>
   <header>
+  <h1>Mias kreativer Kopf!</h1>
+</header>
 
-     <img src="images/keep2.jpg.jpg" alt="hero" width="30">
-    <h1>Mias kreativer Kopf!</h1>
-    
-  </header>
 
  
 
