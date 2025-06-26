@@ -70,7 +70,7 @@
 
     .gallery {
       flex: 0 0 auto;
-      max-width: 400px;
+      max-width: 700px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 10px;
@@ -92,11 +92,21 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
 
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background-color: #eee;
-      margin-top: 2rem;
+    .mehr-button {
+      display: none;
+      background-color: #e27e2c;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 1rem auto;
+      grid-column: 1 / -1;
+    }
+
+    .gallery-more {
+      display: contents;
     }
 
     @media (max-width: 768px) {
@@ -117,6 +127,25 @@
       .gallery {
         max-width: 90%;
       }
+
+      .gallery-more {
+        display: none;
+      }
+
+      .gallery-more.visible {
+        display: contents;
+      }
+
+      .mehr-button {
+        display: block;
+      }
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #eee;
+      margin-top: 2rem;
     }
   </style>
 </head>
@@ -136,20 +165,41 @@
   <div class="wrapper">
     <main>
       <p>kunst von kleinen künstlern!!!!<br>
-      entdecke hier deine neuen lieblingskunstwerke!</p>
+        entdecke hier deine neuen lieblingskunstwerke!</p>
     </main>
 
     <section class="gallery" id="gallery" aria-label="Galerie">
+      <!-- Immer sichtbare Bilder -->
       <img src="images/Bild1.jpg" alt="Bild 1" loading="lazy" />
       <img src="images/Bild2.jpg" alt="Bild 2" loading="lazy" />
       <img src="images/Bild3.jpg" alt="Bild 3" loading="lazy" />
-      <img src="images/Bild4.jpg" alt="Bild 4" loading="lazy" />
-      <img src="images/Bild5.jpg" alt="Bild 5" loading="lazy" />
-      <img src="images/Bild6.jpg" alt="Bild 6" loading="lazy" />
-      <img src="images/Bild7.jpg" alt="Bild 7" loading="lazy" />
-      <img src="images/Bild8.jpg" alt="Bild 8" loading="lazy" />
+
+      <!-- Nur auf Mobilgeräten versteckt -->
+      <div class="gallery-more">
+        <img src="images/Bild4.jpg" alt="Bild 4" loading="lazy" />
+        <img src="images/Bild5.jpg" alt="Bild 5" loading="lazy" />
+        <img src="images/Bild6.jpg" alt="Bild 6" loading="lazy" />
+        <img src="images/Bild7.jpg" alt="Bild 7" loading="lazy" />
+        <img src="images/Bild8.jpg" alt="Bild 8" loading="lazy" />
+      </div>
+
+      <button class="mehr-button">Mehr anzeigen</button>
     </section>
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const button = document.querySelector(".mehr-button");
+      const mehrBereich = document.querySelector(".gallery-more");
+
+      button.addEventListener("click", function () {
+        mehrBereich.classList.toggle("visible");
+        button.textContent = mehrBereich.classList.contains("visible")
+          ? "Weniger anzeigen"
+          : "Mehr anzeigen";
+      });
+    });
+  </script>
 
   <footer>
     &copy; 2025 Mias kreative Welt
