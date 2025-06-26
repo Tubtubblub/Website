@@ -1,210 +1,67 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mias kreative Galerie</title>
-
-  <style>
-    body {
-      font-family: Arial, Papyrus, sans-serif;
-      margin: 0;
-      background-color: #ad5883;
-      color: #e27e2c;
-      overflow-x: hidden;
-    }
-
-    header {
-      position: relative;
-      height: 300px;
-      background-image: url("images/keep2.jpg.jpg");
-      background-repeat: no-repeat;
-      background-position: center 30%;
-      background-size: 100%;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      padding-top: 2rem;
-      color: rgba(255, 145, 0, 0.897);
-      text-align: center;
-      font-family: Papyrus, Arial;
-      font-size: 2rem;
-      max-width: 100%;
-      box-sizing: border-box;
-      overflow: hidden;
-    }
-
-    header h1 {
-      transform: translate(320px, 88px) rotate(5deg);
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-      margin: 0;
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 1rem;
-    }
-
-    nav a {
-      color: rgba(255, 145, 0, 0.897);
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .wrapper {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 2rem;
-      padding: 2rem;
-    }
-
-    main {
-      flex: 1;
-      font-size: 2.5rem;
-      line-height: 1.5;
-      text-align: center;
-    }
-
-    .gallery {
-      flex: 0 0 auto;
-      max-width: 700px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 10px;
-      padding: 1rem;
-    }
-
-    .gallery img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      aspect-ratio: 1 / 1;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-
-    .mehr-button {
-      display: none;
-      background-color: #e27e2c;
-      color: white;
-      border: none;
-      padding: 0.7rem 1.5rem;
-      font-weight: bold;
-      border-radius: 5px;
-      cursor: pointer;
-      margin: 1rem auto;
-      grid-column: 1 / -1;
-    }
-
-    .gallery-more {
-      display: contents;
-    }
-
-    @media (max-width: 768px) {
-      .wrapper {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      main {
-        font-size: 1.2rem;
-      }
-
-      header h1 {
-        transform: none;
-        font-size: 1.5rem;
-      }
-
-      .gallery {
-        max-width: 90%;
-        grid-template-columns: 1fr;
-      }
-
-      .gallery-more {
-        display: none;
-      }
-
-      .gallery-more.visible {
-        display: contents;
-      }
-
-      .mehr-button {
-        display: block;
-      }
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background-color: #eee;
-      margin-top: 2rem;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mias kreative Galerie</title>
+<style>
+  body{font-family:Arial,Papyrus,sans-serif;margin:0;background:#ad5883;color:#e27e2c;overflow-x:hidden;}
+  header{position:relative;height:300px;background:url("images/keep2.jpg.jpg") no-repeat center 30%;background-size:100%;display:flex;align-items:flex-start;justify-content:center;padding-top:2rem;color:rgba(255,145,0,0.9);text-align:center;font-family:Papyrus,Arial;font-size:2rem;max-width:100%;box-sizing:border-box;overflow:hidden;}
+  header h1{transform:translate(320px,88px) rotate(5deg);text-shadow:2px 2px 4px rgba(0,0,0,0.5);margin:0;}
+  nav{display:flex;justify-content:center;gap:2rem;padding:1rem;}
+  nav a{color:rgba(255,145,0,0.9);text-decoration:none;font-weight:bold;}
+  .wrapper{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2rem;padding:2rem;}
+  main{flex:1;font-size:2.5rem;line-height:1.5;text-align:center;}
+  .gallery{flex:0 0 auto;max-width:700px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;padding:1rem;}
+  .gallery img{width:100%;height:auto;object-fit:cover;border-radius:8px;cursor:pointer;transition:transform 0.3s ease;aspect-ratio:1/1;}
+  .gallery img:hover{transform:scale(1.05);box-shadow:0 4px 8px rgba(0,0,0,0.3);}
+  .mehr-button{display:none;background:#e27e2c;color:#fff;border:none;padding:.7rem 1.5rem;font-weight:bold;border-radius:5px;cursor:pointer;margin:1rem auto;grid-column:1/-1;}
+  .gallery-more{display:contents;}
+  @media(max-width:768px){
+    .wrapper{flex-direction:column;align-items:center;}
+    main{font-size:1.2rem;}
+    header h1{transform:none;font-size:1.5rem;transform:translate(40px,26px) rotate(5deg);text-shadow:2px 2px 4px rgba(0,0,0,0.5);margin:0;}
+    .gallery{max-width:90%;grid-template-columns:1fr;}
+    .gallery-more{display:none;}
+    .gallery-more.visible{display:contents;}
+    .mehr-button{display:block;}
+  }
+  footer{text-align:center;padding:1rem;background:#eee;margin-top:2rem;}
+</style>
 </head>
-
 <body>
-
-  <header>
-    <h1>Mias kreativer Kopf!</h1>
-  </header>
-
-  <nav>
-    <a href="https://www.instagram.com/miaaa.a01" target="_blank" rel="noopener">Instagram</a>
-    <a href="#gallery">Galerie</a>
-    <a href="#shop">Shop</a>
-  </nav>
-
-  <div class="wrapper">
-    <main>
-      <p>kunst von kleinen künstlern!!!!<br>
-        entdecke hier deine neuen lieblingskunstwerke!</p>
-    </main>
-
-    <section class="gallery" id="gallery" aria-label="Galerie">
-      <!-- Immer sichtbare Bilder -->
-      <img src="images/Bild1.jpg" alt="Bild 1" loading="lazy" />
-      <img src="images/Bild2.jpg" alt="Bild 2" loading="lazy" />
-      <img src="images/Bild3.jpg" alt="Bild 3" loading="lazy" />
-
-      <!-- Nur auf Mobilgeräten versteckt -->
-      <div class="gallery-more">
-        <img src="images/Bild4.jpg" alt="Bild 4" loading="lazy" />
-        <img src="images/Bild5.jpg" alt="Bild 5" loading="lazy" />
-        <img src="images/Bild6.jpg" alt="Bild 6" loading="lazy" />
-        <img src="images/Bild7.jpg" alt="Bild 7" loading="lazy" />
-        <img src="images/Bild8.jpg" alt="Bild 8" loading="lazy" />
-      </div>
-
-      <button class="mehr-button">Mehr anzeigen</button>
-    </section>
-  </div>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const button = document.querySelector(".mehr-button");
-      const mehrBereich = document.querySelector(".gallery-more");
-
-      button.addEventListener("click", function () {
-        mehrBereich.classList.toggle("visible");
-        button.textContent = mehrBereich.classList.contains("visible")
-          ? "Weniger anzeigen"
-          : "Mehr anzeigen";
-      });
+<header><h1>Mias kreativer Kopf!</h1></header>
+<nav>
+  <a href="https://www.instagram.com/miaaa.a01" target="_blank" rel="noopener">Instagram</a>
+  <a href="#gallery">Galerie</a>
+  <a href="#shop">Shop</a>
+</nav>
+<div class="wrapper">
+  <main><p>kunst von kleinen künstlern!<br><br>Entdecke hier deine neuen Lieblingskunstwerke!</p></main>
+  <section class="gallery" id="gallery" aria-label="Galerie">
+    <img src="images/Bild1.jpg" alt="Bild 1" loading="lazy" />
+    <img src="images/Bild2.jpg" alt="Bild 2" loading="lazy" />
+    <img src="images/Bild3.jpg" alt="Bild 3" loading="lazy" />
+    <div class="gallery-more">
+      <img src="images/Bild4.jpg" alt="Bild 4" loading="lazy" />
+      <img src="images/Bild5.jpg" alt="Bild 5" loading="lazy" />
+      <img src="images/Bild6.jpg" alt="Bild 6" loading="lazy" />
+      <img src="images/Bild7.jpg" alt="Bild 7" loading="lazy" />
+      <img src="images/Bild8.jpg" alt="Bild 8" loading="lazy" />
+    </div>
+    <button class="mehr-button">Mehr anzeigen</button>
+  </section>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded",()=>{
+    const btn=document.querySelector(".mehr-button");
+    const mehr=document.querySelector(".gallery-more");
+    btn.addEventListener("click",()=>{
+      mehr.classList.toggle("visible");
+      btn.textContent=mehr.classList.contains("visible")?"Weniger anzeigen":"Mehr anzeigen";
     });
-  </script>
-
-  <footer>
-    &copy; 2025 Mias kreative Welt
-  </footer>
-
+  });
+</script>
+<footer>&copy; 2025 Mias kreative Welt</footer>
 </body>
 </html>
