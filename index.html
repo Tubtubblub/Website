@@ -5,28 +5,138 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mias kreative Galerie</title>
 <style>
-  body{font-family:Arial,Papyrus,sans-serif;margin:0;background:#ad5883;color:#e27e2c;overflow-x:hidden;}
-  header{position:relative;height:300px;background:url("images/keep2.jpg.jpg") no-repeat center 30%;background-size:100%;display:flex;align-items:flex-start;justify-content:center;padding-top:2rem;color:rgba(255,145,0,0.9);text-align:center;font-family:Papyrus,Arial;font-size:2rem;max-width:100%;box-sizing:border-box;overflow:hidden;}
-  header h1{transform:translate(320px,88px) rotate(5deg);text-shadow:2px 2px 4px rgba(0,0,0,0.5);margin:0;}
-  nav{display:flex;justify-content:center;gap:2rem;padding:1rem;}
-  nav a{color:rgba(255,145,0,0.9);text-decoration:none;font-weight:bold;}
-  .wrapper{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2rem;padding:2rem;}
-  main{flex:1;font-size:2.5rem;line-height:1.5;text-align:center;}
-  .gallery{flex:0 0 auto;max-width:700px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;padding:1rem;}
-  .gallery img{width:100%;height:auto;object-fit:cover;border-radius:8px;cursor:pointer;transition:transform 0.3s ease;aspect-ratio:1/1;}
-  .gallery img:hover{transform:scale(1.05);box-shadow:0 4px 8px rgba(0,0,0,0.3);}
-  .mehr-button{display:none;background:#e27e2c;color:#fff;border:none;padding:.7rem 1.5rem;font-weight:bold;border-radius:5px;cursor:pointer;margin:1rem auto;grid-column:1/-1;}
-  .gallery-more{display:contents;}
-  @media(max-width:768px){
-    .wrapper{flex-direction:column;align-items:center;}
-    main{font-size:1.2rem;}
-    header h1{transform:none;font-size:1.5rem;transform:translate(40px,26px) rotate(5deg);text-shadow:2px 2px 4px rgba(0,0,0,0.5);margin:0;}
-    .gallery{max-width:90%;grid-template-columns:1fr;}
-    .gallery-more{display:none;}
-    .gallery-more.visible{display:contents;}
-    .mehr-button{display:block;}
+  body {
+    font-family: Arial, Papyrus, sans-serif;
+    margin: 0;
+    background: #ad5883;
+    color: #e27e2c;
+    overflow-x: hidden;
   }
-  footer{text-align:center;padding:1rem;background:#eee;margin-top:2rem;}
+  header {
+    position: relative;
+    height: 300px;
+    background: url("images/keep2.jpg.jpg") no-repeat center 30%;
+    background-size: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 2rem;
+    color: rgba(255,145,0,0.9);
+    text-align: center;
+    font-family: Papyrus, Arial;
+    font-size: 2rem;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  header h1 {
+    transform: translate(320px,88px) rotate(5deg);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    margin: 0;
+  }
+  nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem;
+  }
+  nav a {
+    color: rgba(255,145,0,0.9);
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 2rem;
+  }
+  main {
+    flex: 1;
+    font-size: 2.5rem;
+    line-height: 1.5;
+    text-align: center;
+  }
+  .gallery {
+    flex: 0 0 auto;
+    max-width: 700px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+    gap: 10px;
+    padding: 1rem;
+  }
+  .gallery img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    aspect-ratio: 1/1;
+  }
+  .gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  }
+  .mehr-button,
+  .open-large-gallery {
+    background: #e27e2c;
+    color: #fff;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 1rem auto;
+    display: block;
+    max-width: 200px;
+  }
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background: #eee;
+    margin-top: 2rem;
+  }
+  /* Große Galerie Styling */
+  .large-gallery-section {
+    display: none;
+    max-width: 1000px;
+    margin: 2rem auto;
+  }
+  .large-gallery-section.active {
+    display: block;
+  }
+  .large-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+    gap: 10px;
+  }
+  .large-gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    cursor: pointer;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  .large-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  }
+  .back-button {
+    background: #e27e2c;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 1rem auto 2rem;
+    display: block;
+    max-width: 200px;
+  }
 </style>
 </head>
 <body>
@@ -36,32 +146,88 @@
   <a href="#gallery">Galerie</a>
   <a href="#shop">Shop</a>
 </nav>
-<div class="wrapper">
-  <main><p>kunst von kleinen künstlern!<br><br>Entdecke hier deine neuen Lieblingskunstwerke!</p></main>
+
+<div class="wrapper" id="main-content">
+  <main>
+    <p>kunst von kleinen künstlern!<br><br>Entdecke hier deine neuen Lieblingskunstwerke!</p>
+  </main>
   <section class="gallery" id="gallery" aria-label="Galerie">
+    <!-- Alle Bilder direkt sichtbar -->
     <img src="images/Bild1.jpg" alt="Bild 1" loading="lazy" />
     <img src="images/Bild2.jpg" alt="Bild 2" loading="lazy" />
     <img src="images/Bild3.jpg" alt="Bild 3" loading="lazy" />
-    <div class="gallery-more">
-      <img src="images/Bild4.jpg" alt="Bild 4" loading="lazy" />
-      <img src="images/Bild5.jpg" alt="Bild 5" loading="lazy" />
-      <img src="images/Bild6.jpg" alt="Bild 6" loading="lazy" />
-      <img src="images/Bild7.jpg" alt="Bild 7" loading="lazy" />
-      <img src="images/Bild8.jpg" alt="Bild 8" loading="lazy" />
-    </div>
+    <img src="images/Bild4.jpg" alt="Bild 4" loading="lazy" />
+    <img src="images/Bild5.jpg" alt="Bild 5" loading="lazy" />
+    <img src="images/Bild6.jpg" alt="Bild 6" loading="lazy" />
+    <img src="images/Bild7.jpg" alt="Bild 7" loading="lazy" />
+    <img src="images/Bild8.jpg" alt="Bild 8" loading="lazy" />
     <button class="mehr-button">Mehr anzeigen</button>
   </section>
+  <button class="open-large-gallery">Galerie öffnen</button>
 </div>
-<script>
-  document.addEventListener("DOMContentLoaded",()=>{
-    const btn=document.querySelector(".mehr-button");
-    const mehr=document.querySelector(".gallery-more");
-    btn.addEventListener("click",()=>{
-      mehr.classList.toggle("visible");
-      btn.textContent=mehr.classList.contains("visible")?"Weniger anzeigen":"Mehr anzeigen";
-    });
-  });
-</script>
+
+<section class="large-gallery-section" id="large-gallery-section">
+  <button class="back-button">Zurück</button>
+  <h2>Große Galerie</h2>
+  <div class="large-gallery">
+    <!-- 24 Bilder hier -->
+    <img src="images/Bild1.jpg" alt="Bild 1" loading="lazy" />
+    <img src="images/Bild2.jpg" alt="Bild 2" loading="lazy" />
+    <img src="images/Bild3.jpg" alt="Bild 3" loading="lazy" />
+    <img src="images/Bild4.jpg" alt="Bild 4" loading="lazy" />
+    <img src="images/Bild5.jpg" alt="Bild 5" loading="lazy" />
+    <img src="images/Bild6.jpg" alt="Bild 6" loading="lazy" />
+    <img src="images/Bild7.jpg" alt="Bild 7" loading="lazy" />
+    <img src="images/Bild8.jpg" alt="Bild 8" loading="lazy" />
+    <img src="images/Bild9.jpg" alt="Bild 9" loading="lazy" />
+    <img src="images/Bild10.jpg" alt="Bild 10" loading="lazy" />
+    <img src="images/Bild11.jpg" alt="Bild 11" loading="lazy" />
+    <img src="images/Bild12.jpg" alt="Bild 12" loading="lazy" />
+    <img src="images/Bild13.jpg" alt="Bild 13" loading="lazy" />
+    <img src="images/Bild14.jpg" alt="Bild 14" loading="lazy" />
+    <img src="images/Bild15.jpg" alt="Bild 15" loading="lazy" />
+    <img src="images/Bild16.jpg" alt="Bild 16" loading="lazy" />
+    <img src="images/Bild17.jpg" alt="Bild 17" loading="lazy" />
+    <img src="images/Bild18.jpg" alt="Bild 18" loading="lazy" />
+    <img src="images/Bild19.jpg" alt="Bild 19" loading="lazy" />
+    <img src="images/Bild20.jpg" alt="Bild 20" loading="lazy" />
+    <img src="images/Bild21.jpg" alt="Bild 21" loading="lazy" />
+    <img src="images/Bild22.jpg" alt="Bild 22" loading="lazy" />
+    <img src="images/Bild23.jpg" alt="Bild 23" loading="lazy" />
+    <img src="images/Bild24.jpg" alt="Bild 24" loading="lazy" />
+  </div>
+</section>
+
 <footer>&copy; 2025 Mias kreative Welt</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const mehrBtn = document.querySelector(".mehr-button");
+  const openLargeGalleryBtn = document.querySelector(".open-large-gallery");
+  const largeGallerySection = document.getElementById("large-gallery-section");
+  const mainContent = document.getElementById("main-content");
+  const backBtn = document.querySelector(".back-button");
+
+  function showLargeGallery() {
+    mainContent.style.display = "none";
+    document.querySelector("header").style.display = "none";
+    document.querySelector("nav").style.display = "none";
+    largeGallerySection.classList.add("active");
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function hideLargeGallery() {
+    mainContent.style.display = "flex";
+    document.querySelector("header").style.display = "flex";
+    document.querySelector("nav").style.display = "flex";
+    largeGallerySection.classList.remove("active");
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  mehrBtn.addEventListener("click", showLargeGallery);
+  openLargeGalleryBtn.addEventListener("click", showLargeGallery);
+  backBtn.addEventListener("click", hideLargeGallery);
+});
+</script>
 </body>
 </html>
