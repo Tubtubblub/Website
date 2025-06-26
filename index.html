@@ -92,6 +92,10 @@
     display: block;
     max-width: 200px;
   }
+  .mehr-button:hover,
+  .open-large-gallery:hover {
+    background: #d26c1f;
+  }
   footer {
     text-align: center;
     padding: 1rem;
@@ -143,8 +147,8 @@
 <header><h1>Mias kreativer Kopf!</h1></header>
 <nav>
   <a href="https://www.instagram.com/miaaa.a01" target="_blank" rel="noopener">Instagram</a>
-  <a href="#gallery">Galerie</a>
-  <a href="#shop">Shop</a>
+  <a href="#" id="nav-gallery-link">Galerie</a>
+  <a href="https://www.instagram.com/miaaa.a01" target="_blank" rel="noopener">Shop</a>                                             
 </nav>
 
 <div class="wrapper" id="main-content">
@@ -227,6 +231,13 @@ document.addEventListener("DOMContentLoaded", () => {
   mehrBtn.addEventListener("click", showLargeGallery);
   openLargeGalleryBtn.addEventListener("click", showLargeGallery);
   backBtn.addEventListener("click", hideLargeGallery);
+
+  // Add event for nav Galerie link
+  const navGalleryLink = document.getElementById("nav-gallery-link");
+  navGalleryLink.addEventListener("click", function(e) {
+    e.preventDefault();
+    showLargeGallery();
+  });
 });
 </script>
 </body>
