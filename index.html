@@ -11,7 +11,10 @@
     background: #ad5883;
     color: #e27e2c;
     overflow-x: hidden;
+    max-width: 100vw;
+    position: relative;
   }
+
   header {
     position: relative;
     height: 300px;
@@ -28,12 +31,16 @@
     max-width: 100%;
     box-sizing: border-box;
     overflow: hidden;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
   }
+
   header h1 {
     transform: translate(320px,88px) rotate(5deg);
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     margin: 0;
   }
+
   nav {
     display: flex;
     justify-content: center;
@@ -45,6 +52,7 @@
     text-decoration: none;
     font-weight: bold;
   }
+
   .wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -52,12 +60,14 @@
     gap: 2rem;
     padding: 2rem;
   }
+
   main {
     flex: 1;
     font-size: 2.5rem;
     line-height: 1.5;
     text-align: center;
   }
+
   .gallery {
     flex: 0 0 auto;
     max-width: 700px;
@@ -66,7 +76,9 @@
     gap: 10px;
     padding: 1rem;
   }
-  .gallery img {
+
+  .gallery img,
+  .large-gallery img {
     width: 100%;
     height: auto;
     object-fit: cover;
@@ -75,134 +87,156 @@
     transition: transform 0.3s ease;
     aspect-ratio: 1/1;
   }
-  .gallery img:hover {
+
+  .gallery img:hover,
+  .large-gallery img:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0,0,0,0.3);
   }
+
   .mehr-button,
-  .open-large-gallery {
+  .open-large-gallery,
+  .back-button {
     background: #e27e2c;
     color: #fff;
     border: none;
     padding: 0.7rem 1.5rem;
     font-weight: bold;
-    border-radius: 5px;
+    border-radius:  100px;
     cursor: pointer;
     margin: 1rem auto;
     display: block;
     max-width: 200px;
   }
+
   .mehr-button:hover,
-  .open-large-gallery:hover {
+  .open-large-gallery:hover,
+  .back-button:hover {
     background: #d26c1f;
   }
+
   footer {
     text-align: center;
     padding: 1rem;
     background: #eee;
     margin-top: 2rem;
   }
-  /* Große Galerie Styling */
+
   .large-gallery-section {
     display: none;
     max-width: 1000px;
     margin: 2rem auto;
   }
+
   .large-gallery-section.active {
     display: block;
   }
+
   .large-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
     gap: 10px;
   }
-  .large-gallery img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    cursor: pointer;
-    aspect-ratio: 1/1;
-    object-fit: cover;
-    transition: transform 0.3s ease;
+
+  .lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
   }
-  .large-gallery img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+
+  .lightbox-overlay.active {
+    display: flex;
   }
-  .back-button {
-    background: #e27e2c;
+
+  .lightbox-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px black;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 2rem;
     color: white;
-    border: none;
-    padding: 0.7rem 1.5rem;
-    font-weight: bold;
-    border-radius: 5px;
     cursor: pointer;
-    margin: 1rem auto 2rem;
-    display: block;
-    max-width: 200px;
+  }
+
+  @media (max-width: 600px) {
+    header h1 {
+      transform: none;
+      font-size: 1.5rem;
+      text-align: center;
+    }
   }
 </style>
 </head>
 <body>
-<header><h1>Mias kreativer Kopf!</h1></header>
-<nav>
-  <a href="https://www.instagram.com/miaaa.a01" target="_blank" rel="noopener">Instagram</a>
-  <a href="#" id="nav-gallery-link">Galerie</a>
-  <a href="https://www.instagram.com/miaaa.a01" target="_blank" rel="noopener">Shop</a>                                             
-</nav>
+  <header><h1>Mias kreativer Kopf!</h1></header>
+  <nav>
+    <a href="https://www.instagram.com/miaaa.a01" target="_blank" rel="noopener">Instagram</a>
+    <a href="#" id="nav-gallery-link">Galerie</a>
+    <a href="https://www.instagram.com/miaaa.a01" target="_blank" rel="noopener">Shop</a>                                             
+  </nav>
 
-<div class="wrapper" id="main-content">
-  <main>
-    <p>kunst von kleinen künstlern!<br><br>Entdecke hier deine neuen Lieblingskunstwerke!</p>
-  </main>
-  <section class="gallery" id="gallery" aria-label="Galerie">
-    <!-- Alle Bilder direkt sichtbar -->
-    <img src="images/Bild1.jpg" alt="Bild 1" loading="lazy" />
-    <img src="images/Bild2.jpg" alt="Bild 2" loading="lazy" />
-    <img src="images/Bild3.jpg" alt="Bild 3" loading="lazy" />
-    <img src="images/Bild4.jpg" alt="Bild 4" loading="lazy" />
-    <img src="images/Bild5.jpg" alt="Bild 5" loading="lazy" />
-    <img src="images/Bild6.jpg" alt="Bild 6" loading="lazy" />
-    <img src="images/Bild7.jpg" alt="Bild 7" loading="lazy" />
-    <img src="images/Bild8.jpg" alt="Bild 8" loading="lazy" />
-    <button class="mehr-button">Mehr anzeigen</button>
-  </section>
-  <button class="open-large-gallery">Galerie öffnen</button>
-</div>
-
-<section class="large-gallery-section" id="large-gallery-section">
-  <button class="back-button">Zurück</button>
-  <h2>Große Galerie</h2>
-  <div class="large-gallery">
-    <!-- 24 Bilder hier -->
-    <img src="images/Bild1.jpg" alt="Bild 1" loading="lazy" />
-    <img src="images/Bild2.jpg" alt="Bild 2" loading="lazy" />
-    <img src="images/Bild3.jpg" alt="Bild 3" loading="lazy" />
-    <img src="images/Bild4.jpg" alt="Bild 4" loading="lazy" />
-    <img src="images/Bild5.jpg" alt="Bild 5" loading="lazy" />
-    <img src="images/Bild6.jpg" alt="Bild 6" loading="lazy" />
-    <img src="images/Bild7.jpg" alt="Bild 7" loading="lazy" />
-    <img src="images/Bild8.jpg" alt="Bild 8" loading="lazy" />
-    <img src="images/Bild9.jpg" alt="Bild 9" loading="lazy" />
-    <img src="images/Bild10.jpg" alt="Bild 10" loading="lazy" />
-    <img src="images/Bild11.jpg" alt="Bild 11" loading="lazy" />
-    <img src="images/Bild12.jpg" alt="Bild 12" loading="lazy" />
-    <img src="images/Bild13.jpg" alt="Bild 13" loading="lazy" />
-    <img src="images/Bild14.jpg" alt="Bild 14" loading="lazy" />
-    <img src="images/Bild15.jpg" alt="Bild 15" loading="lazy" />
-    <img src="images/Bild16.jpg" alt="Bild 16" loading="lazy" />
-    <img src="images/Bild17.jpg" alt="Bild 17" loading="lazy" />
-    <img src="images/Bild18.jpg" alt="Bild 18" loading="lazy" />
-    <img src="images/Bild19.jpg" alt="Bild 19" loading="lazy" />
-    <img src="images/Bild20.jpg" alt="Bild 20" loading="lazy" />
-    <img src="images/Bild21.jpg" alt="Bild 21" loading="lazy" />
-    <img src="images/Bild22.jpg" alt="Bild 22" loading="lazy" />
-    <img src="images/Bild23.jpg" alt="Bild 23" loading="lazy" />
-    <img src="images/Bild24.jpg" alt="Bild 24" loading="lazy" />
+  <div class="wrapper" id="main-content">
+    <main>
+      <p>kunst von kleinen künstlern!<br><br>Entdecke hier deine neuen Lieblingskunstwerke!</p>
+    </main>
+    <section class="gallery" id="gallery" aria-label="Galerie">
+      
+      <img src="images/Bild1.jpg" alt="Bild 1" loading="lazy" />
+      <img src="images/Bild2.jpg" alt="Bild 2" loading="lazy" />
+      <img src="images/Bild3.jpg" alt="Bild 3" loading="lazy" />
+      <img src="images/Bild4.jpg" alt="Bild 2" loading="lazy" />
+      <img src="images/Bild5.jpg" alt="Bild 3" loading="lazy" />
+      <img src="images/Bild6.jpg" alt="Bild 1" loading="lazy" />
+      <img src="images/Bild7.jpg" alt="Bild 2" loading="lazy" />
+      <img src="images/Bild8.jpg" alt="Bild 3" loading="lazy" />
+      <img src="images/Bild9.jpg" alt="Bild 2" loading="lazy" />
+      <img src="images/Bild10.jpg" alt="Bild 3" loading="lazy" />
+      <button class="mehr-button">Mehr anzeigen</button>
+    </section>
+    <button class="open-large-gallery">Galerie öffnen</button>
   </div>
-</section>
 
-<footer>&copy; 2025 Mias kreative Welt</footer>
+  <section class="large-gallery-section" id="large-gallery-section" style="display:none;">
+    <button class="back-button">Zurück</button>
+    <h2>Große Galerie</h2>
+    <div class="large-gallery">
+      <img src="images/Bild1.jpg" alt="Bild 1" loading="lazy" />
+      <img src="images/Bild2.jpg" alt="Bild 2" loading="lazy" />
+      <img src="images/Bild3.jpg" alt="Bild 3" loading="lazy" />
+      <img src="images/Bild4.jpg" alt="Bild 4" loading="lazy" />
+      <img src="images/Bild5.jpg" alt="Bild 5" loading="lazy" />
+      <img src="images/Bild6.jpg" alt="Bild 1" loading="lazy" />
+      <img src="images/Bild7.jpg" alt="Bild 2" loading="lazy" />
+      <img src="images/Bild8.jpg" alt="Bild 3" loading="lazy" />
+      <img src="images/Bild9.jpg" alt="Bild 2" loading="lazy" />
+      <img src="images/Bild10.jpg" alt="Bild 3" loading="lazy" />
+      <img src="images/Bild11.jpg" alt="Bild 3" loading="lazy" />
+      <img src="images/Bild12.jpg" alt="Bild 2" loading="lazy" />
+      <img src="images/Bild13.jpg" alt="Bild 3" loading="lazy" />
+      <img src="images/Bild14.jpg" alt="Bild 1" loading="lazy" />
+      <img src="images/Bild15.jpg" alt="Bild 2" loading="lazy" />
+      <img src="images/Bild16.jpg" alt="Bild 3" loading="lazy" />
+      <img src="images/Bild17.jpg" alt="Bild 2" loading="lazy" />
+      <img src="images/Bild18.jpg" alt="Bild 3" loading="lazy" />
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.8); justify-content:center; align-items:center;">
+    <img id="lightbox-img" src="" alt="" style="max-width:90%; max-height:90%; border-radius:10px;" />
+  </div>
+
+  <footer>&copy; 2025 Mias kreative Welt</footer>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -211,34 +245,79 @@ document.addEventListener("DOMContentLoaded", () => {
   const largeGallerySection = document.getElementById("large-gallery-section");
   const mainContent = document.getElementById("main-content");
   const backBtn = document.querySelector(".back-button");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
 
+  // Funktion: Große Galerie zeigen
   function showLargeGallery() {
     mainContent.style.display = "none";
     document.querySelector("header").style.display = "none";
     document.querySelector("nav").style.display = "none";
-    largeGallerySection.classList.add("active");
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    largeGallerySection.style.display = "block";
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
+  // Funktion: Zurück zur Startseite
   function hideLargeGallery() {
     mainContent.style.display = "flex";
     document.querySelector("header").style.display = "flex";
     document.querySelector("nav").style.display = "flex";
-    largeGallerySection.classList.remove("active");
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    largeGallerySection.style.display = "none";
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
+  // Event: Buttons zum Anzeigen der großen Galerie
   mehrBtn.addEventListener("click", showLargeGallery);
   openLargeGalleryBtn.addEventListener("click", showLargeGallery);
+
+  // Event: Zurück-Button
   backBtn.addEventListener("click", hideLargeGallery);
 
-  // Add event for nav Galerie link
+  // Galerie-Link im Nav
   const navGalleryLink = document.getElementById("nav-gallery-link");
-  navGalleryLink.addEventListener("click", function(e) {
+  navGalleryLink.addEventListener("click", e => {
     e.preventDefault();
     showLargeGallery();
+  });
+
+  // Lightbox öffnen
+  function openLightbox(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt;
+    lightbox.style.display = "flex";
+  }
+
+  // Lightbox schließen
+  function closeLightbox() {
+    lightbox.style.display = "none";
+    lightboxImg.src = "";
+    lightboxImg.alt = "";
+  }
+
+  // Bilder anklickbar machen (kleine + große Galerie)
+  const allImages = document.querySelectorAll(".gallery img, .large-gallery img");
+  allImages.forEach(img => {
+    img.style.cursor = "pointer";
+    img.addEventListener("click", () => {
+      openLightbox(img.src, img.alt);
+    });
+  });
+
+  // Lightbox beim Klick schließen (außer auf das Bild selbst)
+  lightbox.addEventListener("click", e => {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  // Auch ESC-Taste schließt Lightbox
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && lightbox.style.display === "flex") {
+      closeLightbox();
+    }
   });
 });
 </script>
 </body>
+
 </html>
