@@ -6,239 +6,222 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mias kreative Galerie</title>
   <style>
-    html,
-    body {
-      max-width: 100vw;
-      overflow-x: hidden;
-    }
-
-    body {
-      font-family: Arial, Papyrus, sans-serif;
-      margin: 0;
-      background: #ad5883;
-      color: #e27e2c;
-      overflow-x: hidden;
-      max-width: 100vw;
-      position: relative;
-    }
-
-    header {
-      position: relative;
-      height: 300px;
-      background: url("images/keep2.jpg.jpg") no-repeat center 30%;
-      background-size: 100%;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      padding-top: 2rem;
-      color: rgba(255, 145, 0, 0.9);
-      text-align: center;
-      font-family: Papyrus, Arial;
-      font-size: 2rem;
-      max-width: 100%;
-      box-sizing: border-box;
-      overflow: hidden;
-      border-bottom-left-radius: 150px 50px;
-      border-bottom-right-radius: 50px;
-    }
-
-    header h1 {
-      transform: translate(320px, 88px) rotate(5deg);
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-      margin: 0;
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 1rem;
-    }
-
-    nav a {
-      color: rgba(255, 145, 0, 0.9);
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .wrapper {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 2rem;
-      padding: 2rem;
-    }
-
-    main {
-      flex: 1;
-      font-size: 2.5rem;
-      line-height: 1.5;
-      text-align: center;
-    }
-
-    .gallery {
-      flex: 0 0 auto;
-      max-width: 700px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 10px;
-      padding: 1rem;
-    }
-
-    .gallery img,
-    .large-gallery img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      aspect-ratio: 1/1;
-    }
-
-    .gallery img:hover,
-    .large-gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-
-    .mehr-button,
-    .open-large-gallery,
-    .back-button {
-      background: #e27e2c;
-      color: #fff;
-      border: none;
-      padding: 0.7rem 1.5rem;
-      font-weight: bold;
-      border-radius: 100px;
-      cursor: pointer;
-      margin: 1rem auto;
-      display: block;
-      max-width: 200px;
-    }
-
-    .mehr-button:hover,
-    .open-large-gallery:hover,
-    .back-button:hover {
-      background: #d26c1f;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: #eee;
-      margin-top: 2rem;
-    }
-
-    .large-gallery-section {
-      display: none;
-      max-width: 1000px;
-      margin: 2rem auto;
-    }
-
-    .large-gallery-section.active {
-      display: block;
-    }
-
-    .large-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 10px;
-    }
-
-    .lightbox-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.8);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    .lightbox-overlay.active {
-      display: flex;
-    }
-
-    .lightbox-overlay img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 10px;
-      box-shadow: 0 0 20px black;
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: 2rem;
-      right: 2rem;
-      font-size: 2rem;
-      color: white;
-      cursor: pointer;
-    }
-
-    /* Media Queries */
-
-    @media (max-width: 600px) {
-
-      header h1 {
-        rotate: 5deg;
-        transform: none;
-        font-size: 1.5rem;
-        text-align: center;
-      }
-
-      main p {
-        text-align: center;
-        font-size: 1.8rem;
-        padding: 0 1rem;
-      }
-
-      .gallery {
-        justify-content: center;
-        margin: 0 auto;
-        padding: 1rem;
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        max-width: 100%;
-      }
-
-      header {
-        height: 150px;
-        background-position: center 18%;
-      }
-    }
-
-    footer {
-      font-size: 1.2rem;
-      padding: 0.5rem;
-      margin-top: auto;
-      color: #ffffff;
-      background-color: #81385d;
-      border-radius: 150px 50px 0 0;
-    }
-
+    /* Grundlegende Einstellungen */
 html, body {
-  height: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
   margin: 0;
   padding: 0;
 }
 
 body {
+  font-family: Arial, Papyrus, sans-serif;
+  background: #ad5883;
+  color: #e27e2c;
+  position: relative;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+}
+
+/* Header */
+header {
+  position: relative;
+  height: 200px;
+  background: url("images/keep2.jpg.jpg") no-repeat center 30%;
+  background-size: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 2rem;
+  color: rgba(255,145,0,0.9);
+  text-align: center;
+  font-family: Papyrus, Arial;
+  font-size: 2rem;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-bottom-left-radius: 150px 50px;
+  border-bottom-right-radius: 50px;
+}
+
+header h1 {
+  transform: translate(320px, 88px) rotate(5deg);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  margin: 0;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem;
+}
+
+nav a {
+  color: rgba(255,145,0,0.9);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0%;
+}
+
+/* Wrapper & Hauptinhalt */
+.wrapper {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2rem;
 }
 
 main {
   flex: 1;
-}
-
-footer {
-  background-color: #81385d;
-  color: white;
-  padding: 1rem;
-  border-radius: 150px 50px 0 0;
+  font-size: 2.5rem;
+  line-height: 1.5;
   text-align: center;
 }
+
+/* Galerie */
+.gallery {
+  flex: 0 0 auto;
+  max-width: 700px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  padding: 1rem;
+}
+
+.gallery img,
+.large-gallery img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  aspect-ratio: 1 / 1;
+}
+
+.gallery img:hover,
+.large-gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* Buttons */
+.mehr-button,
+.open-large-gallery,
+.back-button {
+  background: #e27e2c;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  font-weight: bold;
+  border-radius: 100px;
+  cursor: pointer;
+  margin: 1rem auto;
+  display: block;
+  max-width: 200px;
+}
+
+.mehr-button:hover,
+.open-large-gallery:hover,
+.back-button:hover {
+  background: #d26c1f;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 0.5rem;
+  background-color: #81385d;
+  color: #ffffff;
+  font-size: 1.2rem;
+  border-radius: 150px 50px 0 0;
+  margin-top: auto;
+  width: 100%;
+}
+
+/* Große Galerie */
+.large-gallery-section {
+  display: none;
+  max-width: 1000px;
+  margin: 2rem auto;
+}
+
+.large-gallery-section.active {
+  display: block;
+}
+
+.large-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+/* Lightbox */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.lightbox-overlay.active {
+  display: flex;
+}
+
+.lightbox-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px black;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  header {
+    height: 150px; /* Bild höher auf Handy */
+    background-position: center 18%;
+    background-size: cover;
+    padding-top: 2rem;
+  }
+
+  header h1 {
+    transform: none;
+    font-size: 1.5rem;
+    margin-top: 0;
+  }
+
+  main p {
+    font-size: 1.8rem;
+    padding: 0 1rem;
+    text-align: center;
+  }
+
+  .gallery {
+    justify-content: center;
+    margin: 0 auto;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    max-width: 100%;
+    padding: 1rem;
+  }
+}
+
 
 
 
@@ -255,18 +238,14 @@ footer {
     <a href="https://www.instagram.com/miaaa.a01" target="_blank" rel="noopener">Instagram</a>
     <a href="#" id="nav-gallery-link">Galerie</a>
     <a href="https://www.instagram.com/miaaa.a01" target="_blank" rel="noopener">Shop</a>
+    <a href="https://www.instagram.com/miaaa.a01" target="_blank" rel="noopener">Kontakt</a>
+    <a href="https://www.instagram.com/miaaa.a01" target="_blank" rel="noopener">Über mich</a>
   </nav>
 
   <div class="wrapper" id="main-content">
     <main>
       <p>
-        kunst von kleinen künstlern!<br /><br />Entdecke hier deine neuen Lieblingskunstwerke!
-      </p>
-      <p>
-        Über mich: ich bin mia blabla 19 jahre vorhanden und liebe es zu malen! Hier findest du eine Auswahl
-        meiner Werke, die ich mit viel Liebe und Kreativität erschaffen habe. Jedes Bild erzählt seine eigene
-        Geschichte und ich hoffe, sie gefallen dir genauso gut wie mir! Viel Spaß beim Stöbern in meiner Galerie!
-      </p>
+        kunst von kleinen künstlern!<br />Entdecke hier deine neuen Lieblingskunstwerke!
     </main>
 
     <section class="gallery" id="gallery" aria-label="Galerie">
